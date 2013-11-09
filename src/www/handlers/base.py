@@ -5,6 +5,8 @@ import utils.validationmixin
 
 import uuid
 
+import models.user
+
 class BaseHandler(tornado.web.RequestHandler, utils.validationmixin.ValidationMixin):
     @property
     def mysqldb(self):
@@ -17,6 +19,15 @@ class BaseHandler(tornado.web.RequestHandler, utils.validationmixin.ValidationMi
 
         if 'chunk' in kwargs:
             self.write(kwargs['chunk'])
+
+    def get_current_user(self):
+        # normal web request
+        user_cookie = self.get_secure_cookie("user")
+        if not user_cookie:
+            return None
+        user_dict = tornado.escape.json_decode(user_cookie)
+
+        return models.user.UserModel.get_from_mysql_with_id(self.application, user_dict['id'])
 
     def render_json(self, chunk):
         if isinstance(chunk, dict):
