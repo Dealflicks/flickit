@@ -16,5 +16,8 @@ Notes
 ======
 
 mkvirtualenv flickit
+cd /flickit/src/www
+pip install -r requirements.txt
 
 
+sudo nginx -c /Users/zcancio/Development/flickit/flickit/nginx.conf
