@@ -1,7 +1,7 @@
 import string
 import random
 import pycurl
-from StringIO import StringIO
+from cStringIO import StringIO
 #import pprint
 from lxml.html import fromstring
 import nltk
@@ -42,25 +42,25 @@ def get_best_for_image(img_url):
 	return img_texts[1].strip()
 
 
-def get_movie_for_best_guess(img_text):
-	request = urllib2.Request("https://api.dealflicks.com/movies/")
-	base64string = base64.encodestring('%s:%s' % ("dealflick$_$ecret_key", "")).replace('\n', '')
-	#print base64string
-	#request.add_header("Authorization", "Basic %s" % base64string)   
-	request.add_header("Authorization", "Basic ZGVhbGZsaWNrJF8kZWNyZXRfYXBpOg==")   
-	response = urllib2.urlopen(request)
+def get_movie_for_best_guess(movies, img_text):
+	# request = urllib2.Request("https://api.dealflicks.com/movies/")
+	# base64string = base64.encodestring('%s:%s' % ("dealflick$_$ecret_key", "")).replace('\n', '')
+	# #print base64string
+	# #request.add_header("Authorization", "Basic %s" % base64string)   
+	# request.add_header("Authorization", "Basic ZGVhbGZsaWNrJF8kZWNyZXRfYXBpOg==")   
+	# response = urllib2.urlopen(request)
 
-	movies = json.loads(response.read())
-
+	# movies = json.loads(response.read())
+	#movies = db.query("SELECT id, name FROM movie ORDER BY name ASC")
 	k = -1
 	best_id = 0
 	best_movie = ""
-	for id, movie in movies.iteritems():
-		l = nltk.metrics.distance.edit_distance(img_text.lower(), movie.lower())
+	for movie in movies:
+		l = nltk.metrics.distance.edit_distance(img_text.lower(), movie.name.lower())
 		if(l<k or k == -1):
 			k=l
-			best_id=id
-			best_movie=movie
+			best_id=movie.id
+			best_movie=movie.name
 
 	our_movie = { 'id': best_id, 'movie': best_movie, 'nltk': k}
 	return our_movie
@@ -75,7 +75,11 @@ def access_s3():
 	return k
 
 
-def edit_and_upload_image(image):
+def edit_and_upload_image(image, key_name=None):
+	imgbuf = edit_image(image)
+	return upload_image(imgbuf, key_name)
+
+def edit_image(image):
 	im = Image.open(StringIO(urllib.urlopen(image).read()))
 	img_size = im.getbbox()
 	new_y = (img_size[3] * 2) / 3
@@ -87,14 +91,18 @@ def edit_and_upload_image(image):
 	new_im = im.crop(new_size)
 	imgbuf = StringIO()
 	new_im.save(imgbuf, "JPEG")
+	return imgbuf
+
+def upload_image(imgbuf, key_name=None):
 	k = access_s3()
 
-	key_name = id_generator()
+	if key_name is None:
+		key_name = id_generator()
 
 	k.key = "images/%s.jpg" % key_name
 	k.set_contents_from_string(imgbuf.getvalue())
 	k.make_public()
-	return k.generate_url(120).split('?')[0]
+	return (key_name, k.generate_url(120).split('?')[0])
 
 
 def get_attr_or_default(unidentified_object, attr_name, default_value=None):
