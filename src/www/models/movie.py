@@ -112,6 +112,27 @@ class MovieModel(models.base.BaseModel):
         return movies
 
 
+
+    @classmethod
+    def create_movies_list_from_mysql_rows(cls, app, movie_rows):
+        movies = []
+
+        for movie_row in movie_rows:
+            movies.append(cls(app, movie_row))
+
+        return movies
+
+    @classmethod
+    def get_all_movies_from_mysql_ordered_by_release_date(cls, app):
+        movie_rows = app.mysqldb.query("SELECT * FROM movie ORDER BY theater_release_date DESC ")
+        return cls.create_movies_list_from_mysql_rows(app, movie_rows)
+
+    @classmethod
+    def get_all_movies_from_mysql_ordered_alphabetically(cls, app):
+        movie_rows = app.mysqldb.query("SELECT * FROM movie ORDER BY name ASC ")
+        return cls.create_movies_list_from_mysql_rows(app, movie_rows)
+
+
     ### Class Methods to Implement ###
 
     ### Static Methods ###

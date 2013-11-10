@@ -12,31 +12,107 @@
 		<h2>Add a Flickit widget to your website or blog.<br /> Or don't, see if we care.</h2>
 	</div>
 	<div class="row row2">
-		<h3>First Choose your Movie</h3>
-		<select>
-			<option>Ender's Game</option>
-			<option>Thor</option>
+		<h3>Step 1: Choose your Movie</h3>
+		<select id="movie-select">
+			{% for movie in movies %}
+			<option value="{{movie.id}}" {%if movie.id == preselected_movie_id%}selected="selected"{%end%}>{{movie.name}}</option>
+			{% end %}
+		</select>
+		<h3>Step 2: Select Button Type</h3>
+		<select id="button-type-select">
+			<option value="one-movie" selected="selected">One Movie</option>
+			<option value="any-movie-image">Any Movie Image</option>
 		</select>
 	</div>
 	<div class="row row3">
 		<div class="col-md-5">
 			<h3>Embed this HTML</h3>
-			<p>Copy and paste this code snippet where you want your widget to appear</p>
-			<div class="textwrap">
-				<textarea readonly="true">
-					<a href="//www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&media=http%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&description=Next%20stop%3A%20Pinterest" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
-				</textarea>
+			<div id="one-movie-html">
+				<p>Copy and paste this code snippet where you want your widget to appear</p>
+				<div class="textwrap">
+					<textarea readonly="true" id="html-embed">
+						
+					</textarea>
+				</div>
+			</div>
+			<div id="any-movie-image-html" style="display: none;">
+				<p>No code snippet needed for the any movie image widget</p>
 			</div>
 		</div>
 		<div class="col-md-5 col-md-offset-2">
 			<h3>Embed This Javascript</h3>
 			<p>Copy and paste this javascript link once at the bottom of your HTML</p>
 			<div class="textwrap">
-				<textarea readonly="true">
-					<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+				<textarea readonly="true" id="js-embed">
+					
 				</textarea>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+function update_html_embed(movie_id){
+
+	$('#html-embed').text('<a href="//www.justflickit.com/flicks/create?movie_id=' + movie_id + '" data-flickit-do="buttonFlickit" data-flickit-config="beside">Flickit</a>');
+
+}
+
+function update_js_embed(button_type){
+
+
+	var text = "(function(d){" +
+				    "\n    var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');" +
+				    "\n    p.type = 'text/javascript';";
+	
+
+	if (button_type === "any-movie-image"){
+		text = text + "\n    p.setAttribute('data-flickit-hover', true);";
+	}
+
+
+	text =  text +  "\n    p.async = true;" +
+				    "\n    p.src = '//www.justflickit.com/static/js/flickit.js';" +
+				    "\n    f.parentNode.insertBefore(p, f);" +
+				"\n    }(document));"
+
+	$('#js-embed').text(text);
+
+
+
+	if (button_type === "one-movie"){
+		$('#one-movie-html').show();
+		$('#any-movie-image-html').hide();
+
+	} else if (button_type === "any-movie-image"){
+		$('#one-movie-html').hide();
+		$('#any-movie-image-html').show();
+	}
+
+				
+}
+
+$(document).ready(function(event){
+
+	// init
+	update_html_embed($("#movie-select").val());
+	update_js_embed($("#button-type-select").val());
+
+	// event handlers
+	$('#movie-select').on('change', function(event){
+		update_html_embed(this.value);
+	});
+
+	// event handlers
+	$('#button-type-select').on('change', function(event){
+		update_js_embed(this.value);
+	});
+
+
+});
+
+
+
+</script>
 {% end %}
