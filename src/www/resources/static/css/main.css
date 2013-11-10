@@ -49,6 +49,11 @@ button{border:none;background:none;outline:none;text-rendering:optimizeLegibilit
 .movie-list-flicks .cast{color:#444;margin-bottom:10px;font-size:18px}
 .movie-list-flicks .description{clear:both;color:#444}
 .login,.widget-builder{padding:20px;margin-top:30px;margin-left:10px}
+.login{max-width:768px;margin:5% auto 0 auto;color:#777}.login .row1{text-align:center}
+.login h1{text-align:center}
+.login h2{color:#888;font-size:24px;line-height:120%;text-align:center}
+.login h3{color:#335572;text-align:center}
+.login .login-form{background:#eaeaea;margin:30px auto 0 auto;width:200px;position:relative;padding:20px;border-radius:4px;border:1px #bbb solid}.login .login-form .btn{margin-top:10px;width:155px;background:#335572;color:#fff}
 .widget-builder{text-align:center;max-width:768px;margin:40px auto 0 auto;color:#777}.widget-builder .row1{margin:0;border-bottom:1px #ddd solid;padding-bottom:20px}
 .widget-builder .row2{margin:0;border-top:1px #fff solid;border-bottom:1px #ddd solid;padding-bottom:40px}
 .widget-builder .row3{margin:0;border-top:1px #fff solid;padding-top:10px}
