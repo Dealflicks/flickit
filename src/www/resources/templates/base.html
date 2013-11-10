@@ -18,7 +18,7 @@
 		<div class="navbar navbar-fixed-top">
 			<a href="/" ><img src="../static/img/flickit-logo.png"/></a>
 		    {% if current_user %}
-			<div class="username"><a class="btn" href="/flicks">{{ escape(user.first_name) }}'s' Flicks</a></div>
+			<div class="username"><a class="btn" href="/flicks">{{ escape(current_user.first_name) }}'s' Flicks</a></div>
 		    {% end %}
 		</div>
 		{% block content %}
