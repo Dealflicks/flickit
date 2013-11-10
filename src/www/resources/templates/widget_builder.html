@@ -12,17 +12,21 @@
 		<h2>Add a Flickit widget to your website or blog.<br /> Or don't, see if we care.</h2>
 	</div>
 	<div class="row row2">
+		<div class="col-md-6">
 		<h3>Step 1: Choose your Movie</h3>
-		<select id="movie-select">
-			{% for movie in movies %}
-			<option value="{{movie.id}}" {%if movie.id == preselected_movie_id%}selected="selected"{%end%}>{{movie.name}}</option>
-			{% end %}
-		</select>
+			<select id="movie-select">
+				{% for movie in movies %}
+				<option value="{{movie.id}}" {%if movie.id == preselected_movie_id%}selected="selected"{%end%}>{{movie.name}}</option>
+				{% end %}
+			</select>
+		</div>
+		<div class="col-md-6">
 		<h3>Step 2: Select Button Type</h3>
-		<select id="button-type-select">
-			<option value="one-movie" selected="selected">One Movie</option>
-			<option value="any-movie-image">Any Movie Image</option>
-		</select>
+			<select id="button-type-select">
+				<option value="one-movie" selected="selected">One Movie</option>
+				<option value="any-movie-image">Any Movie Image</option>
+			</select>
+		</div>
 	</div>
 	<div class="row row3">
 		<div class="col-md-5">

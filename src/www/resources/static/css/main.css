@@ -54,6 +54,6 @@ button{border:none;background:none;outline:none;text-rendering:optimizeLegibilit
 .widget-builder .row3{margin:0;border-top:1px #fff solid;padding-top:10px}
 .widget-builder h2{color:#888;font-size:24px;line-height:120%}
 .widget-builder h3{color:#335572}
-.widget-builder select{width:350px;height:30px;font-size:18px;background:#eaeaea;border:none;border:1px #bbb solid;color:#666}
+.widget-builder select{width:300px;height:30px;font-size:18px;background:#eaeaea;border:none;border:1px #bbb solid;color:#666}
 .widget-builder .textwrap{margin-left:-20px}.widget-builder .textwrap textarea{width:350px;height:175px;background:#eaeaea;min-height:100px;color:#444;margin:0;border:none;border-top:1px #bbb solid;border-bottom:1px #fff solid;padding:10px;font-size:12px}
 .widget-builder .col-md-5{padding:0}
