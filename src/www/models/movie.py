@@ -83,6 +83,16 @@ class MovieModel(models.base.BaseModel):
         count_dict = self._app.mysqldb.get("SELECT count(*) AS flick_count FROM flick WHERE movie_id=%s", self._id)
         return count_dict['flick_count']
 
+    @property
+    def golden_movies(self):
+        ids = [129,130,100,80,119]
+        
+        movies = []
+        for id in ids:
+            movies.append(self.get_from_mysql_with_id(self._app, id))
+
+        return movies
+
 
     ### Instance Methods ###
 
