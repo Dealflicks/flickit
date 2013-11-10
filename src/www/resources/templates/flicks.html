@@ -19,6 +19,7 @@
 		</div>
 		<div class="col-md-9 content">
 			<div class="row">
+				<div class="embed"><a class="btn" href="/widget-builder">Embed</a></div>
 				<h2>{{ flick.movie.name }} <span class="released">({{ flick.movie.theater_release_date }})</span></h2>
 				<h4>{{ flick.movie.mpaa_rating }} | {{ flick.movie.duration }}min | {{ flick.movie.genre }}</h4>
 				<div class="ratings">
@@ -28,8 +29,7 @@
 				<div class="cast"><strong>Cast:</strong> {{ flick.movie.abridged_cast }}</div>
 				<p class="description">{{ flick.movie.synopsis }}</p>
 			</div>
-		</div>
-		<div class="embed"><a class="btn" href="/widget-builder">Embed</a></div>	
+		</div>	
 	</div>
 
 	{% end %}
