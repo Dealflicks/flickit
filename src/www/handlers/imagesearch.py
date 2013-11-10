@@ -59,6 +59,7 @@ class PictureSearchByStringHandler(PictureHandler):
 
     def post(self):
     	img_string = self.valid('imgstr', str, required=True)
+        api_token = self.valid('api_token', str, required=True)
     	if (self.errors):
             return self.send_error(400, chunk={'Status' : 'Error', 'Errors' : self.errors })
 
@@ -66,7 +67,16 @@ class PictureSearchByStringHandler(PictureHandler):
     	imgbuf.write(img_string)
     	org_img_url, key_name = utils.utils.upload_image(imgbuf)
     	id, name, nltk = self.search_for_picture(org_img_url, key_name)
-    	self.write("movie_id: %s" % id)   
+
+        user = models.user.UserModel.get_from_mysql_with_api_token(self.application, api_token)
+        movie = models.movie.MovieModel.get_from_mysql_with_id(self.application, id)
+        flick = models.flick.FlickModel.get_or_create(self.application, movie.id, user.id)
+
+        has_flicked = False
+        if flick:
+            has_flicked = True
+
+    	self.write("movie_id: %s - movie_name: %s - has_flicked: %s" % (id, name, has_flicked))   
 
 class JSONPHandler(handlers.base.BaseHandler):
 

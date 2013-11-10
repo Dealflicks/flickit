@@ -15,6 +15,7 @@ class UserModel(models.base.BaseModel):
         self._first_name = utils.utils.get_attr_or_default(init_dict, 'first_name')
         self._last_name = utils.utils.get_attr_or_default(init_dict, 'last_name')
         self._email = utils.utils.get_attr_or_default(init_dict, 'email')
+        self._api_token = utils.utils.get_attr_or_default(init_dict, 'api_token')
 
     ### Properties ###
     @property
@@ -27,7 +28,11 @@ class UserModel(models.base.BaseModel):
 
     @property
     def first_name(self):
-        return self._first_name   
+        return self._first_name
+
+    @property   
+    def api_token(self):
+        return self._api_token
 
     @property
     def flicks(self):
@@ -56,6 +61,11 @@ class UserModel(models.base.BaseModel):
     @classmethod
     def get_from_mysql_with_id(cls, app, user_id):
         init_dict = app.mysqldb.get("SELECT * FROM user WHERE id=%s", user_id)
+        return cls.init_from_app_and_init_dict(app, init_dict)
+
+    @classmethod
+    def get_from_mysql_with_api_token(cls, app, api_token):
+        init_dict = app.mysqldb.get("SELECT * FROM user WHERE api_token=%s", api_token)
         return cls.init_from_app_and_init_dict(app, init_dict)
     
     ### Class Methods to Implement ###
