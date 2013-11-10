@@ -1,7 +1,7 @@
 import models.base
 import utils.utils
 import utils.settings
-import utils.movie
+import models.movie
 
 
 class FlickModel(models.base.BaseModel):
