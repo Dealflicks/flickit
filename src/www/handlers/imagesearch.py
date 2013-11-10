@@ -52,7 +52,7 @@ class PictureSearchHandler(PictureHandler):
     	if (self.errors):
             return self.send_error(400, chunk={'Status' : 'Error', 'Errors' : self.errors })
     	id, name, nltk = self.search_for_picture(org_img_url)
-    	self.write("movie_id: %s" % id)
+    	self.write("movie_id: %s - movie_name: %s - has_flicked: %s" % (id, name, has_flicked)) 
 
 
 class PictureSearchByStringHandler(PictureHandler):
