@@ -2,22 +2,23 @@
 
 {% block content %}
 
-<h1> Login Flickit </h1>
-
-
-<div class="content">
-
-
-    <form action="/login" method="post">
-        <label>
-            Email <input name="email" type="text"/>
-        </label>
-        <label>
-            Password <input name="password" type="password"/>
-        </label>
-        <button type="submit">Login</button>
-    </form>
-
-</div>
-
+<div class="navbar navbar-fixed-top"><img src="../static/img/flickit-logo.png"/></div>
+	<div class="login">
+		<h1> Flickit Login </h1>
+	    <form action="/login" method="post">
+	        <div class="row">
+		        <label>
+		        	Email 
+		        	<input name="email" type="text"/>
+		        </label>
+		    </div>
+		    <div class="row">
+		        <label>
+		            Password 
+		            <input name="password" type="password"/>
+		        </label>
+	    	</div>
+	        <button class="btn" type="submit">Login</button>
+	    </form>
+	</div>
 {% end %}

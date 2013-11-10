@@ -1,3 +1,46 @@
+body {
+	background: #f5f5f5; /* Old browsers */
+}
+
+h1, h2 {
+	color:#335572;
+	text-shadow: 0 1px 0 #fff;
+}
+
+h3 {
+	color:#777;
+	text-shadow: 0 1px 0 #fff;
+	line-height: 130%;	
+}
+
+h4 {
+	color:#555;
+}
+
+input, textarea {
+	border-radius: 4px;
+	border:1px #bbb solid;
+	float: none;
+	padding-left:5px;
+}
+label {
+	width:120px;
+	margin-bottom:10px;
+}
+
+.btn {
+	border:1px #ddd solid;
+}
+
+.row {
+	margin-left:0px;
+	margin-right:0px;
+}
+
+.col-md-2 {
+	min-width: 200px;
+}
+
 /**** Flickit Button ****/
 	button {
 		border: none;
@@ -196,115 +239,192 @@
 	padding:10px 0px;
 	border-bottom:1px #ddd solid;
 
-img {
-	margin-left:19px;
+	img {
+		margin-left:19px;
+	}
 }
 
+
+.login, .widget-builder {
+	padding:20px;
+	margin-top:30px;
+	margin-left:10px;
 }
+
+.widget-builder {
+	text-align: center;
+	max-width: 768px;
+	margin:40px auto 0 auto;
+	color:#777;
+
+	.row1 {
+		margin:0px;
+		border-bottom: 1px #ddd solid;
+		padding-bottom:20px;
+	}
+
+	.row2 {
+		margin:0px;
+		border-top: 1px #fff solid;
+		border-bottom: 1px #ddd solid;
+		padding-bottom:40px;
+	}
+
+	.row3 {
+		margin:0px;
+		border-top: 1px #fff solid;
+		padding-top:10px;
+	}
+
+	h2 {
+		color:#888;
+		font-size: 24px;
+		line-height: 120%;
+	}
+
+	h3 {
+		color:#335572;
+	}
+
+	select {
+		width:350px;
+		height:30px;
+		font-size:18px;
+		background: #eaeaea;
+		border:none;
+		border:1px #bbb solid;
+		color:#666;
+	}
+
+	.textwrap {
+		margin-left:-20px;
+
+		textarea {
+			width:350px;
+			height:175px;
+			background:#eaeaea;
+			min-height: 100px;
+			color:#444;
+			margin:0px;
+			border:none;
+			border-top:1px #bbb solid;
+			border-bottom:1px #fff solid;
+			padding:10px;
+			font-size:12px;
+		}
+	}
+
+	.col-md-5 {
+		padding:0px;
+	}
+}
+
+
 
 .movie-list {
 	margin-top:50px;
 
-h2 {
-	color:#335572;
-}
+	.movie-row {
+		background: #f5f5f5; /* Old browsers */
+		background: -moz-linear-gradient(top,  #fafafa 0%, #f5f5f5 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#f5f5f5)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #fafafa 0%,#f5f5f5 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #fafafa 0%,#f5f5f5 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #fafafa 0%,#f5f5f5 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #fafafa 0%,#f5f5f5 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#f5f5f5',GradientType=0 ); /* IE6-9 */
+		padding:20px;
+		border-bottom:1px #dedede solid;
+		border-top:1px #fff solid;
+		height: 100%;
+		
+		.poster {
+			padding-top:20px;
+			// text-align: center;
 
-h4 {
-	color:#555;
-}
+			img {
+				box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+			}
 
-
-.movie-row {
-	// background: #f5f5f5; /* Old browsers */
-	// background: -moz-linear-gradient(top,  #f5f5f5 0%, #dddddd 100%); /* FF3.6+ */
-	// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#dddddd)); /* Chrome,Safari4+ */
-	// background: -webkit-linear-gradient(top,  #f5f5f5 0%,#dddddd 100%); /* Chrome10+,Safari5.1+ */
-	// background: -o-linear-gradient(top,  #f5f5f5 0%,#dddddd 100%); /* Opera 11.10+ */
-	// background: -ms-linear-gradient(top,  #f5f5f5 0%,#dddddd 100%); /* IE10+ */
-	// background: linear-gradient(to bottom,  #f5f5f5 0%,#dddddd 100%); /* W3C */
-	// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#dddddd',GradientType=0 ); /* IE6-9 */
-	background:#f5f5f5;
-	padding:20px;
-	border-bottom:1px #ddd solid;
-	border-top:1px #fff solid;
-	height: 100%;
-
-	.poster {
-		padding-top:20px;
-		text-align: center;
-		vertical-align: middle;
-
-		img {
-			box-shadow: 0 1px 4px rgba(0,0,0,0.5);
 		}
+
+	}
+
+	.released {
+				text-align: left;
+				font-weight: 500;
+				color:#999;
+				font-size: 21px;
+				padding-bottom:5px;
+			}
+
+	.ratings {
+		margin:15px 0px;
+		background: #eaeaea;
+		border-top:1px #bbb solid;
+		border-bottom:1px #fff solid;
+		overflow: hidden;
+		border-radius:4px;
+		width:220px;
+		padding:6px 0px 0px 15px;
+
+		.rt-icon {
+			background:url(../img/ics_home_rt.png) no-repeat;
+			width:32px;
+			height:32px;
+			margin:2px 5px 10px 0px;
+			float:left;
+		}
+
+		h3 {	
+			float:left;
+			margin:3px 40px 0px 0px;
+			width:25px;
+			color:#444;
+			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+		}
+
+	    .fresh {
+	        background:url(../img/ics_home_rt.png) no-repeat -64px -130px;
+	        
+	    }
+
+	      .rotten {
+	        background:url(../img/ics_home_rt.png) no-repeat -272px -144px;
+	      }
+
+	      .upright {
+	        background:url(../img/ics_home_rt.png) no-repeat -30px -128px;
+	      }
+
+	      .spilled {
+	        background:url(../img/ics_home_rt.png) no-repeat -208px -144px;
+	      }
+
+	      .want-to-see {
+	        background:url(../img/ics_home_rt.png) no-repeat -192px -144px;
+	      }
+	}
+
+	.content {
+		padding-left:15px;
+	}
+
+	.cast {
+		color:#444;
+		margin-bottom:10px;
+		font-size:18px;
+	}
+
+	.description {
+		clear:both;
+		color:#444;
 	}
 
 }
 
-.ratings {
-	margin:15px 0px;
-	background: #bbb;
-	border-top:1px #aaa solid;
-	border-bottom:1px #fff solid;
-	overflow: hidden;
-	border-radius:4px;
-	width:220px;
-	padding:10px 0px 0px 15px;
-
-	.rt-icon {
-		background:url(../img/ics_home_rt.png) no-repeat;
-		width:32px;
-		height:32px;
-		margin:5px 5px 10px 0px;
-		float:left;
-	
-	}
-
-	h3 {	
-		float:left;
-		margin:6px 40px 0px 0px;
-		width:25px;
-		color:#fff;
-		text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-	}
-
-    .fresh {
-        background:url(../img/ics_home_rt.png) no-repeat -64px -130px;
-        
-    }
-
-      .rotten {
-        background:url(../img/ics_home_rt.png) no-repeat -272px -144px;
-      }
-
-      .upright {
-        background:url(../img/ics_home_rt.png) no-repeat -30px -130px;
-      }
-
-      .spilled {
-        background:url(../img/ics_home_rt.png) no-repeat -208px -144px;
-      }
-
-      .want-to-see {
-        background:url(../img/ics_home_rt.png) no-repeat -192px -144px;
-      }
-}
-
-.cast {
-	color:#444;
-	margin-bottom:10px;
-	font-size:18px;
-}
-
-.description {
-	clear:both;
-	color:#444;
-}
-
-}
-
-.dfbtn {
-	margin-top:20px;
+.flickit-btn {
+	margin-top:10px;
 	display: inline-block;
 	border-radius:3px;
 	border: none;
@@ -316,17 +436,18 @@ h4 {
 	font-weight:500;
 	text-decoration: none;
 	outline: none;
+	width:180px;
 }
 
-.dfbtn:hover {
+.flickit-btn:hover {
 	text-decoration: none;
 	color: #fff;
 }
 
-.dfbtn.disabled,
-.dfbtn[disabled],
-.dfbtn:hover.disabled,
-.dfbtn:hover[disabled] {  
+.flickit-btn.disabled,
+.flickit-btn[disabled],
+.flickit-btn:hover.disabled,
+.flickit-btn:hover[disabled] {  
 	background-color: #dfdfdf;
 	text-shadow: 0 1px 0 #4a4949;
 	box-shadow:0 3px 3px rgba(0,0,0,.42), inset 0 2px 0 rgba(255,254,253,.41);
@@ -334,7 +455,7 @@ h4 {
 	cursor: default;
 }
 
-.dfbtn-blue {
+.flickit-btn-deals {
 	text-shadow: 0 1px 0 #083357; // drop shadow
 	border: none;
 	background-color: #4594c5; // layer fill content
@@ -343,30 +464,12 @@ h4 {
 	outline-color:rgba(0,0,0,0);
 }
 
-.dfbtn-blue:hover {
+.flickit-btn-deals:hover {
 	background-color: #0f84cc; // layer fill content
 	box-shadow:0 1px 3px rgba(0,0,0,.53), inset 0 2px 0 rgba(255,254,253,.41); // drop shadow and inner shadow
 	background-image: none;
 	outline-color:rgba(0,0,0,0);
 }
 
-.dfbtn-dark {
-	display: inline-block;
-	border-radius:3px;
-	background-color: #444; // layer fill content
-	box-shadow:0 1px 3px rgba(0,0,0,.46), inset 0 2px 0 rgba(255,254,253,.41);
-	background-image:linear-gradient(bottom, #ffb500 -4.5%, #ffb500 -3.97%, #ffc501 104.5%);
-	border: none;
-	color: #fff; // text color
-	text-shadow: 0 1px 0 #000; // drop shadow
-	cursor: pointer;
-	margin-left:10px;
-}
-
-.dfbtn-dark:hover {
-  background-color: #222; // layer fill content
-  box-shadow:0 1px 3px rgba(0,0,0,.46), inset 0 2px 0 rgba(255,254,253,.41);
-  background-image:linear-gradient(bottom, rgba(255,181,0,.62) -4.5%, rgba(255,181,0,.62) -3.97%, rgba(255,198,2,.62) 104.5%);
-}
 /**** End Flicks Page ****/
 .hide {display:none;}
