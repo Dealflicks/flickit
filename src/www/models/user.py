@@ -25,6 +25,17 @@ class UserModel(models.base.BaseModel):
     def email(self):
         return self._email
 
+    @property
+    def flicks(self):
+        flick_rows = self._app.mysqldb.query("SELECT * FROM flick WHERE user_id = %s ORDER BY flicked_at DESC", self._id)
+
+        flicks = []
+
+        for flick_row in flick_rows:
+            flicks.append(models.flick.FlickModel(self._app, flick_row))
+
+        return flicks
+
     ### Instance Methods ###
 
 

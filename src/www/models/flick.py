@@ -1,6 +1,7 @@
 import models.base
 import utils.utils
 import utils.settings
+import utils.movie
 
 
 class FlickModel(models.base.BaseModel):
@@ -25,6 +26,10 @@ class FlickModel(models.base.BaseModel):
     @property
     def email(self):
         return self._email
+
+    @property
+    def movie(self):
+        return utils.movie.MovieModel.get_from_mysql_with_id(self._app, self._movie_id)
 
 
     ### Instance Methods ###
