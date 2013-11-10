@@ -1,0 +1,36 @@
+application: dealflicksglassapp
+version: 1
+runtime: go
+api_version: go1
+
+handlers:
+
+- url: /static
+  static_dir: static
+
+- url: /attachmentproxy
+  script: _go_app
+
+- url: /auth
+  script: _go_app
+
+- url: /oauth2callback
+  script: _go_app
+
+- url: /signout
+  script: _go_app
+
+- url: /notify
+  script: _go_app
+
+- url: /processnotification
+  script: _go_app
+
+- url: /
+  script: _go_app
+
+- url: /test
+  script: _go_app
+
+- url: /serve/
+  script: _go_app
