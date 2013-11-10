@@ -9,8 +9,8 @@
         
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     
 
         <!--
@@ -19,6 +19,7 @@
         (function(d){
           var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
           p.type = 'text/javascript';
+
           p.async = true;
           p.src = '//assets.pinterest.com/js/pinit.js';
           f.parentNode.insertBefore(p, f);
@@ -28,6 +29,32 @@
         -->
         
 
+        <!--
+<script type="text/javascript">
+(function(d){
+  var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+  p.type = 'text/javascript';
+  p.setAttribute('data-pin-hover', true);
+  p.async = true;
+  p.src = '//assets.pinterest.com/js/pinit.js';
+  f.parentNode.insertBefore(p, f);
+}(document));
+</script>
+-->
+<!--
+    <script type="text/javascript">
+    (function(d){
+      var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+      p.type = 'text/javascript';
+      p.setAttribute('data-flickit-debug', true);
+      p.setAttribute('data-flickit-dev', 'local');
+      p.setAttribute('data-flickit-hover', true);
+      p.async = true;
+      p.src = '//www.justflickit.dev/static/js/flickit.js';
+      f.parentNode.insertBefore(p, f);
+    }(document));
+    </script>
+  -->
 
 
 
@@ -62,8 +89,9 @@
 
         <a href="//www.justflickit.dev/flicks/create?movie_id=118" data-flickit-do="buttonFlickit" data-flickit-config="beside">Flickit</a>
 
+        <!--
+        <script src="//www.justflickit.dev/static/js/flickit.js" data-flickit-debug=true data-flickit-dev="local" data-flickit-hover=true></script>-->
 
-        <script src="//www.justflickit.dev/static/js/flickit.js" data-flickit-debug=true data-flickit-dev="local" data-flickit-hover=true></script>
 
 
 

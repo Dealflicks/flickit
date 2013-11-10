@@ -106,7 +106,7 @@
           $.f.debug(id);
           // create the callback
           $.f.callback[n] = function (r) {
-            console.log(r);
+            $.f.debug(r);
             func(r, n);
             $.f.kill(id);
           };
@@ -683,7 +683,6 @@
             };
           }
 
-          console.log($.v.config);
 
           // override domains if performing local development
           if (typeof $.v.config.dev === 'string') {
@@ -833,7 +832,7 @@
       'beside': true
     }
   },
-  'minImgSize': 199,
+  'minImgSize': 80,
   // source 6 means "flicked with the externally-hosted Flickit button"
   'countSource': 6,
   'dataAttributePrefix': 'data-flickit-',
