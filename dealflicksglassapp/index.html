@@ -1,0 +1,242 @@
+<!--
+Copyright (C) 2012 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassware Starter Project</title>
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+        media="screen">
+  <link href="/static/bootstrap/css/bootstrap-responsive.min.css"
+        rel="stylesheet" media="screen">
+  <link href="/static/main.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">Glassware Starter Project: Go Edition</a>
+
+      <div class="nav-collapse collapse">
+        <form class="navbar-form pull-right" action="/signout" method="post">
+          <button type="submit" class="btn">Sign out</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  {{ if .Message }}
+  <div class="alert alert-info">{{ .Message }}</div>
+  {{ end }}
+
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <h1>Your Recent Timeline</h1>
+  <div class="row">
+
+    <div style="margin-top: 5px;">
+      {{ if .TimelineItems }}
+        {{ range $item := .TimelineItems }}
+        <div class="span4">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>ID</th>
+                <td>{{ $item.Id }}</td>
+              </tr>
+              <tr>
+                <th>Text</th>
+                <td>{{ $item.Text }}</td>
+              </tr>
+              <tr>
+                <th>HTML</th>
+                <td>{{ $item.Html }}</td>
+              </tr>
+              <tr>
+                <th>Attachments</th>
+                <td>
+                  {{ range $item.Attachments }}
+                    {{ if HasPrefix .ContentType "image" }}
+                    <img src="/attachmentproxy?attachment={{ .Id }}&timelineItem={{ $item.Id }}" width="150">
+                    {{ else }}
+                    <a href="/attachmentproxy?attachment={{ .Id }}&timelineItem={{ $item.Id }}">Download</a>
+                    {{ end }}
+                  {{ end }}
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <form class="form-inline" action="/" method="post">
+                    <input type="hidden" name="itemId" value="{{ $item.Id }}">
+                    <input type="hidden" name="operation"
+                           value="deleteTimelineItem">
+                    <button class="btn btn-danger btn-block" type="submit">
+                      Delete Item
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {{ end }}
+      {{ else }}
+      <div class="span12">
+        <div class="alert alert-info">
+          You haven't added any items to your timeline yet. Use the controls
+          below to add something!
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <h2>Timeline</h2>
+
+      <p>When you first sign in, this Glassware inserts a welcome message. Use
+        these controls to insert more items into your timeline. Learn more about
+        the timeline APIs
+        <a href="https://developers.google.com/glass/timeline">here</a>.</p>
+
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="insertItem">
+        <textarea name="message" class="span4">Hello World!</textarea><br/>
+        <button class="btn btn-block" type="submit">
+          Insert the above message
+        </button>
+      </form>
+
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="insertItem">
+        <input type="hidden" name="message"
+               value="A solar eclipse of Saturn. Earth is also in this photo. Can you find it?">
+        <input type="hidden" name="imageUrl"
+               value="/static/images/saturn-eclipse.jpg">
+        <input type="hidden" name="contentType" value="image/jpeg">
+
+        <button class="btn btn-block" type="submit">Insert a picture
+          <img class="button-icon" src="/static/images/saturn-eclipse.jpg">
+        </button>
+      </form>
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="insertItemWithAction">
+        <button class="btn btn-block" type="submit">
+          Insert a card you can reply to
+        </button>
+      </form>
+      <hr>
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="insertItemAllUsers">
+        <button class="btn btn-block" type="submit">
+          Insert a card to all users
+        </button>
+      </form>
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="deleteAllTimelineItems">
+        <button class="btn" type="submit">Delete All Timeline Items</button>
+        <input type="hidden" name="contentType" value="image/png">
+      </form>
+    </div>
+
+    <div class="span4">
+      <h2>Contacts</h2>
+      <p>By default, this project inserts a single contact that accepts
+      all content types. Learn more about contacts
+      <a href="https://developers.google.com/glass/contacts">here</a>.</p>
+
+      {{ if .Contact }}
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="deleteContact">
+        <input type="hidden" name="id" value="Go Quick Start">
+        <button class="btn btn-block btn-danger" type="submit">
+          Delete Go Quick Start Contact
+        </button>
+      </form>
+      {{ else }}
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="insertContact">
+        <input type="hidden" name="imageUrl"
+               value="/static/images/gopher.png">
+        <input type="hidden" name="name"
+               value="Go Quick Start">
+        <button class="btn btn-block btn-success" type="submit">
+          Insert Go Quick Start Contact
+        </button>
+      </form>
+      {{ end }}
+    </div>
+
+    <div class="span4">
+      <h2>Subscriptions</h2>
+
+      <p>
+        By default a subscription is inserted for changes to the
+        <code>timeline</code> collection. Learn more about subscriptions
+        <a href="https://developers.google.com/glass/subscriptions">here</a>.
+      </p>
+
+      <div class="alert alert-info">
+        Note: Subscriptions require SSL. They will not work on localhost.
+      </div>
+
+      {{ if .TimelineSubscriptionExists }}
+      <form action="/" method="post">
+        <input type="hidden" name="subscriptionId" value="timeline">
+        <input type="hidden" name="operation" value="deleteSubscription">
+        <button class="btn btn-block btn-danger" type="submit">
+          Unsubscribe from timeline updates
+        </button>
+      </form>
+      {{ else }}
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="insertSubscription">
+        <input type="hidden" name="collection" value="timeline">
+        <button class="btn btn-block btn-success" type="submit">
+          Subscribe to timeline updates
+        </button>
+      </form>
+      {{ end }}
+
+      {{ if .LocationSubscriptionExists }}
+      <form action="/" method="post">
+        <input type="hidden" name="subscriptionId" value="locations">
+        <input type="hidden" name="operation" value="deleteSubscription">
+        <button class="btn btn-block btn-danger" type="submit">
+          Unsubscribe from location updates
+        </button>
+      </form>
+      {{ else }}
+      <form action="/" method="post">
+        <input type="hidden" name="operation" value="insertSubscription">
+        <input type="hidden" name="collection" value="locations">
+        <button class="btn btn-block btn-success" type="submit">
+          Subscribe to location updates
+        </button>
+      </form>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+<script
+    src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -879,7 +879,7 @@
 
     // FLICK IT BUTTON
 
-    'a._flickit_button {  background-image: url(_cdn/static/img/flickit-button-sprite.png); background-repeat: none; background-size: 67px 60px; height: 20px; margin: 0; padding: 0; vertical-align: baseline; text-decoration: none; width: 67px; background-position: 0 0px }',
+    'a._flickit_button {  background-image: url(_cdn/static/img/flickit-button-sprite.png); background-repeat: no-repeat; background-size: 67px 60px; height: 20px; margin: 0; padding: 0; vertical-align: baseline; text-decoration: none; width: 67px; background-position: 0 0px }',
     'a._flickit_button:hover, span._flickit_button_count:hover { background-position: 0 -20px }',
     'a._flickit_button:active, a._flickit_button._hazClick, span._flickit_button_count:active, span._flickit_button_count._hazClick { background-position: 0 -39px !important}',
     'a._flickit_button_inline { position: relative; display: inline-block; }',
@@ -890,7 +890,7 @@
     // 'a._flickit_above span._flickit_button_count { background: transparent url(_cdn/static/img/flickit-count-above-sprite.png) 0 0 no-repeat; background-size: 40px 29px; position: absolute; bottom: 21px; left: 0px; height: 29px; width: 40px; font: 12px Arial, Helvetica, sans-serif; line-height: 24px; text-indent: 0;}',
 
     // flick count background
-    'a._flickit_beside span._flickit_button_count, a._flickit_beside span._flickit_button_count i {  background-repeat: none; background-size: 43px 60px; background-color: transparent; background-image: url(_cdn/static/img/flickit-count-sprite.png); background-size: 43px 60px; width: 43px; height: 20px; background-position: 0 0px}',
+    'a._flickit_beside span._flickit_button_count {  background-repeat: no-repeat; background-size: 44px 60px; background-color: transparent; background-image: url(_cdn/static/img/flickit-count-sprite.png); background-size: 44px 60px; width: 44px; height: 20px; background-position: 0 0px}',
 
     // flick count flag left side with number
     'a._flickit_beside span._flickit_button_count { padding: 1px 0px 0px 2px; position: absolute; top: 0; left: 66px; height: 20px; font: 10px Arial, Helvetica, sans-serif; line-height: 20px; }',

@@ -5,6 +5,7 @@ import models.movie
 
 class HomeHandler(handlers.base.BaseHandler):
 
+    @tornado.web.authenticated
     def get(self):
         user = self.get_current_user()
 
