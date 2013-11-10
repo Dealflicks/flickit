@@ -49,10 +49,14 @@ class PictureSearchHandler(PictureHandler):
 
     def post(self):
     	org_img_url = self.valid('imgurl', str, required=True)
+        api_token = self.valid('api_token', str, required=True)
     	if (self.errors):
             return self.send_error(400, chunk={'Status' : 'Error', 'Errors' : self.errors })
     	id, name, nltk = self.search_for_picture(org_img_url)
+        
+        user = models.user.UserModel.get_from_mysql_with_api_token(self.application, api_token)
         movie = models.movie.MovieModel.get_from_mysql_with_id(self.application, id)
+        flick = models.flick.FlickModel.get_or_create(self.application, movie.id, user.id)
     	self.write("%s has been flicked %s times." % (name, movie.count)) 
 
 
