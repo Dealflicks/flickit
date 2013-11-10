@@ -24,6 +24,7 @@ class MovieModel(models.base.BaseModel):
         self._synopsis = utils.utils.get_attr_or_default(init_dict, 'synopsis')
         self._theater_release_date = utils.utils.get_attr_or_default(init_dict, 'theater_release_date')
         self._rotten_tomatoes_id = utils.utils.get_attr_or_default(init_dict, 'rotten_tomatoes_id')
+        self._dealflicks_url = utils.utils.get_attr_or_default(init_dict, 'dealflicks_url')
 
     ### Properties ###
     @property
@@ -77,6 +78,10 @@ class MovieModel(models.base.BaseModel):
     @property
     def rotten_tomatoes_id(self):
         return self._rotten_tomatoes_id
+
+    @property
+    def dealflicks_url(self):
+        return self._dealflicks_url
 
     @property
     def count(self):
