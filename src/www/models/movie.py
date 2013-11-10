@@ -1,6 +1,7 @@
 import models.base
 import utils.utils
 import utils.settings
+import datetime
 
 
 class MovieModel(models.base.BaseModel):
@@ -73,7 +74,9 @@ class MovieModel(models.base.BaseModel):
 
     @property
     def theater_release_date(self):
-        return self._theater_release_date
+        d = datetime.datetime.strptime(str(self._theater_release_date), '%Y-%m-%d')
+        #d.strftime('%b %d, %Y')
+        return d.strftime('%b %d, %Y')
 
     @property
     def rotten_tomatoes_id(self):
