@@ -670,6 +670,29 @@
             };
           }
 
+          console.log($.v.config);
+
+          // override domains if performing local development
+          if (typeof $.v.config.dev === 'string') {
+            if ( $.v.config.dev === 'local'){
+              $.a.myDomain = /^https?:\/\/(www\.|)justflickit\.dev\//;
+              $.a.endpoint = {
+                'flick_count': '//www.justflickit.dev/api/v1/flicks/count.json',
+                'flick_create': '//www.justflickit.dev/api/v1/flicks/create.json'
+              };
+              $.a.cdn = {
+                'https:': 'https://www.justflickit.dev',
+                'http:': 'http://www.justflickit.dev',
+                // if we are dragging and dropping to test a page, use http instead of file
+                'file:': 'http://www.justflickit.dev'
+              };
+            }
+
+          }
+
+
+          // }
+
           $.w.setTimeout(function () {
             if (typeof $.v.config.logc === 'string') {
               $.f.log('&type=pidget&logc=' + $.v.config.logc, $.a.endpoint.logc);
@@ -781,13 +804,13 @@
   $.f.init();
 }(window, document, {
   'k': 'FLICKIT_' + new Date().getTime(),
-  'myDomain': /^https?:\/\/(www\.|)justflickit\.dev\//,
+  'myDomain': /^https?:\/\/(www\.|)justflickit\.com\//,
   'me': /flickit.*?\.js$/,
   'floatingButtonOffsetTop': 10,
   'floatingButtonOffsetLeft': 10,
   'endpoint': {
-    'flick_count': '//www.justflickit.dev/api/v1/flicks/count.json',
-    'flick_create': '//www.justflickit.dev/api/v1/flicks/create.json'
+    'flick_count': '//www.justflickit.com/api/v1/flicks/count.json',
+    'flick_create': '//www.justflickit.com/api/v1/flicks/create.json'
   },
   'config': {
     'flickitCountPosition': {
@@ -801,16 +824,16 @@
   'countSource': 6,
   'dataAttributePrefix': 'data-flickit-',
   // valid config parameters
-  'configParam': [ 'build', 'debug', 'style', 'hover', 'logc', 'shallow'],
+  'configParam': [ 'build', 'debug', 'style', 'hover', 'logc', 'shallow', 'dev'],
   // configuration for the pop-up window
   'pop': 'status=no,resizable=yes,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=632,height=270,left=0,top=0',
   'popLarge': 'status=no,resizable=yes,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=900,height=500,left=0,top=0',
   // secure and non-secure content distribution networks
   'cdn': {
-    'https:': 'https://www.justflickit.dev',
-    'http:': 'http://www.justflickit.dev',
+    'https:': 'https://www.justflickit.com',
+    'http:': 'http://www.justflickit.com',
     // if we are dragging and dropping to test a page, use http instead of file
-    'file:': 'http://www.justflickit.dev'
+    'file:': 'http://www.justflickit.com'
   },
   // tiled image settings
   'tile': {
