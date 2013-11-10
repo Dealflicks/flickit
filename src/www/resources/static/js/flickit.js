@@ -334,6 +334,7 @@
             // drop logging callbacks on the floor
           },
           count: function (r, k) {
+
             var container = $.d.getElementById($.a.k + '_flick_count_' + k);
             if (container) {
               $.f.debug('API replied with count: ' + r.count);
@@ -366,6 +367,40 @@
                   $.f.debug('No valid flick count position specified; not rendering.');
                 }
               }
+
+              if (r.has_flicked === true){
+                $.f.debug('User has flicked');
+
+                if (!container.className.match(/hazClick/)) {
+                  container.className = container.className + ' ' + $.a.k + '_hazClick';
+                }
+
+                if (!parent.className.match(/hazClick/)) {
+                  parent.className = parent.className + ' ' + $.a.k + '_hazClick';
+                }
+
+
+                // do nothing if user has already flicked, but prevent href from linking thorugh, for now...
+                parent.onclick = function () {
+                  return false;
+                }
+
+              } else {
+
+                // allow current user to flick
+
+                parent.onclick = function () {
+                  // make api request to add to the current user's flick it list
+                  // oncallback, refresh count
+
+                  $.f.createFlick(r.movie_id, k);
+
+                  return false;
+                }
+              }
+
+
+
               $.f.cssHook(parent, container);
             } else {
               $.f.debug('Flickit button container not found.');
@@ -491,15 +526,14 @@
             //   $.f.debug('no media found; click will pop bookmark');
             // }
 
-            q.url = "https://www.justflickit.dev/movies/33";
 
-            if (q.url) {
-              q.url = $.f.fixUrl(q.url);
-            } else {
-              // misconfigured: no page URL was given
-              q.url = encodeURIComponent($.d.URL);
-              $.f.debug('no url found; click will flick this page');
-            }
+            // if (q.url) {
+            //   q.url = $.f.fixUrl(q.url);
+            // } else {
+            //   // misconfigured: no page URL was given
+            //   q.url = encodeURIComponent($.d.URL);
+            //   $.f.debug('no url found; click will flick this page');
+            // }
 
             // automatically fill in document.title (if avaiable) for blank descriptions
             // if (!q.description) {
@@ -549,17 +583,9 @@
             // };
 
 
-            a.onclick = function () {
-              $.f.createFlick(q.movie_id, a_count);
+     
 
-              // make api request to add to the current user's flick it list
-
-              // oncallback, refresh count
-
-              return false;
-            };
-
-            var movie_id = 33;
+            
 
             // why use $.f.callback.length for id?
             
@@ -567,7 +593,7 @@
             var span = $.f.make({'SPAN': {'className': $.a.k + '_hidden', 'id': $.a.k + '_flick_count_' + a_count, 'innerHTML': '<i></i>'}});
 
             a.appendChild(span);
-            $.f.getFlickCount(movie_id, a_count);
+            $.f.getFlickCount(q.movie_id, a_count);
             $.f.replace(el, a);
 
 
@@ -744,7 +770,7 @@
           $.f.build();
 
           $.f.presentation();
-          $.f.behavior();
+          // $.f.behavior();
 
 
 
@@ -819,7 +845,7 @@
 
     'a._flickit_button {  background-image: url(_cdn/static/img/flickit-button-sprite.png); background-repeat: none; background-size: 67px 60px; height: 20px; margin: 0; padding: 0; vertical-align: baseline; text-decoration: none; width: 67px; background-position: 0 0px }',
     'a._flickit_button:hover, span._flickit_button_count:hover { background-position: 0 -20px }',
-    'a._flickit_button:active, a._flickit_button._hazClick, span._flickit_button_count:active, span._flickit_button_count._hazClick { background-position: 0 -39px }',
+    'a._flickit_button:active, a._flickit_button._hazClick, span._flickit_button_count:active, span._flickit_button_count._hazClick { background-position: 0 -39px !important}',
     'a._flickit_button_inline { position: relative; display: inline-block; }',
     'a._flickit_button_floating { position: absolute; }',
 
