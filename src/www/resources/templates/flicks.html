@@ -2,10 +2,7 @@
 
 {% block content %}
 
-<div class="navbar navbar-fixed-top">
-	<a href="/" ><img src="../static/img/flickit-logo.png"/></a>
-	<div class="username"><a class="btn" href="/flicks">{{ user.first_name }}'s Flicks</a></div>
-</div>
+
 <div class="movie-list-flicks">
 
 	{% for flick in flicks %}
