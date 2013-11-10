@@ -84,7 +84,7 @@ class MovieModel(models.base.BaseModel):
 
     @property
     def dealflicks_url(self):
-        return self._dealflicks_url
+        return self._dealflicks_url + "?r=WjyChmUykrDbgREZFrAzTj"
 
     @property
     def count(self):
