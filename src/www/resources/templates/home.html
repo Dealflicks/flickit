@@ -1,18 +1,17 @@
 {% extends base.html %}
 
 {% block content %}
-<div class="button-wrap">
-	<button class="flickit">
-		<img src="../static/img/df-logo.png"/>flickit
-	</button>
-	<div class="counter">12</div>
+
+<div class="navbar navbar-fixed-top"><img src="../static/img/flickit-logo.png"/></div>
+<div class="home-poster">
+	<div class="poster-wrap">
+		<img src="../static/img/thor-poster-lg.png" />
+		<div class="poster-overlay">
+			<button class="flickit-btn flickit-btn-nope">Nope</button>
+			<button class="flickit-btn flickit-btn-flick">Flickit</button>
+		</div>
+	</div>
 </div>
 
-<div class="button-wrap hide">
-	<button class="flicked">
-		<img src="../static/img/logo-disabled.png"/>flicked
-	</button>
-	<div class="counted">12</div>
-</div>
 
 {% end %}

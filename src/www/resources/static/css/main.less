@@ -244,6 +244,28 @@ label {
 	}
 }
 
+.home-poster {
+	text-align: center;
+	max-width: 768px;
+	margin:6% auto 0 auto;
+	color:#777;
+
+	.poster-wrap {
+		img {
+			box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+		}
+
+		.poster-overlay {
+			background: rgba(0,0,0,.7);
+			width:405px;
+			height:60px;
+			margin:-60px auto 0 auto;
+			position: relative;
+			border-top:1px rgba(255,255,255,.3) solid;
+		}
+	}
+}
+
 
 .login, .widget-builder {
 	padding:20px;
@@ -465,6 +487,39 @@ label {
 }
 
 .flickit-btn-deals:hover {
+	background-color: #0f84cc; // layer fill content
+	box-shadow:0 1px 3px rgba(0,0,0,.53), inset 0 2px 0 rgba(255,254,253,.41); // drop shadow and inner shadow
+	background-image: none;
+	outline-color:rgba(0,0,0,0);
+}
+
+.flickit-btn-nope {
+	text-shadow: 0 1px 0 #8e2424; // drop shadow
+	border: none;
+	background-color: #f05e4f; // layer fill content
+	box-shadow:0 1px 3px rgba(0,0,0,.53), inset 0 2px 0 rgba(255,254,253,.41); // drop shadow and inner shadow
+	background-image:linear-gradient(bottom, #55a0d7 -4.5%, #4594c5 104.5%); // gradient overlay
+	outline-color:rgba(0,0,0,0);
+	margin-right:10px;
+}
+
+.flickit-btn-nope:hover {
+	background-color: #d34640; // layer fill content
+	box-shadow:0 1px 3px rgba(0,0,0,.53), inset 0 2px 0 rgba(255,254,253,.41); // drop shadow and inner shadow
+	background-image: none;
+	outline-color:rgba(0,0,0,0);
+}
+
+.flickit-btn-flick {
+	text-shadow: 0 1px 0 #083357; // drop shadow
+	border: none;
+	background-color: #4594c5; // layer fill content
+	box-shadow:0 1px 3px rgba(0,0,0,.53), inset 0 2px 0 rgba(255,254,253,.41); // drop shadow and inner shadow
+	background-image:linear-gradient(bottom, #55a0d7 -4.5%, #4594c5 104.5%); // gradient overlay
+	outline-color:rgba(0,0,0,0);
+}
+
+.flickit-btn-flick:hover {
 	background-color: #0f84cc; // layer fill content
 	box-shadow:0 1px 3px rgba(0,0,0,.53), inset 0 2px 0 rgba(255,254,253,.41); // drop shadow and inner shadow
 	background-image: none;
