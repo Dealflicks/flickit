@@ -4,7 +4,7 @@
 
 <div class="navbar navbar-fixed-top">
 	<a href="/" ><img src="../static/img/flickit-logo.png"/></a>
-	<div class="username"><a class="btn" href="/flicks">{{ user.first_name }}'s Flicks</a></div>
+	<div class="username"><a class="btn" href="/flicks">{{ escape(user.first_name) }}'s' Flicks</a></div>
 </div>
 <div class="home-poster">
 	<div class="poster-wrap">
@@ -18,12 +18,13 @@
 
 <div class="movie-list">
 	{% for flick in flicks %}
+    {% set flick_movie = flick.movie %}
 	<div class="row movie-row">
 		<div class="col-md-2">
 			<div class="poster">
-				<img width="180" src="{{ flick.movie.poster }}"/>
+				<img width="180" src="{{ flick_movie.poster }}"/>
 			</div>
-			<button class="flickit-btn flickit-btn-deals">View Deals</button>
+			<a class="flickit-btn flickit-btn-deals" href="{{flick_movie.dealflicks_url}}">View Deals</a>
 		</div>
 	</div>
 	{% end %}		
