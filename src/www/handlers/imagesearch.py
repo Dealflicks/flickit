@@ -52,7 +52,8 @@ class PictureSearchHandler(PictureHandler):
     	if (self.errors):
             return self.send_error(400, chunk={'Status' : 'Error', 'Errors' : self.errors })
     	id, name, nltk = self.search_for_picture(org_img_url)
-    	self.write("movie_id: %s" % id)
+        movie = models.movie.MovieModel.get_from_mysql_with_id(self.application, id)
+    	self.write("You have flicked movie %s. It has been flicked %s times." % (name, movie.count)) 
 
 
 class PictureSearchByStringHandler(PictureHandler):

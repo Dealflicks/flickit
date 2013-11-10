@@ -13,7 +13,19 @@ class HomeHandler(handlers.base.BaseHandler):
           flicks = user.flicks
 
         golden_movies = models.movie.MovieModel.get_golden_movies(self.application)
-        self.render("home.html", user=user, flicks=flicks, movies=golden_movies)
+
+        flick_ids = set()
+        for flick in flicks:
+            flick_ids.add(flick.movie_id)
+
+        print flick_ids
+
+        final_movies = []
+        for movie in golden_movies:
+            if movie.id not in flick_ids:
+                final_movies.append(movie)
+
+        self.render("home.html", user=user, flicks=flicks, movies=final_movies)
 
 
 

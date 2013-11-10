@@ -26,6 +26,10 @@ class FlickModel(models.base.BaseModel):
     @property
     def email(self):
         return self._email
+    
+    @property
+    def movie_id(self):
+        return self._movie_id
 
     @property
     def movie(self):
