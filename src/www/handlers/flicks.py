@@ -6,8 +6,9 @@ class FlicksHandler(handlers.base.BaseHandler):
 
     @tornado.web.authenticated
     def get(self):
-    	flicks = self.get_current_user().flicks
-        self.render("flicks.html", flicks = flicks)
+    	user = self.get_current_user()
+    	flicks = user.flicks
+        self.render("flicks.html", user=user, flicks = flicks)
 
 
 class FlicksCreateHandler(handlers.base.BaseHandler):
