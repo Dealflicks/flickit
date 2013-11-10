@@ -19,7 +19,7 @@ class PictureHandler(handlers.base.BaseHandler):
 
         return (img_text, img_url, key_name, edit_count)
 
-    def search_for_image(self, org_img_url, key_name=None):
+    def search_for_picture(self, org_img_url, key_name=None):
         img_url = org_img_url
         img_text, img_url, key_name, edit_count = self.cycle_the_filter(img_url, key_name, 0)   
 
