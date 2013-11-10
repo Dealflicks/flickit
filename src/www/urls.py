@@ -15,10 +15,10 @@ handlers = [
       (r"/flicks/create", handlers.flicks.FlicksCreateHandler),
       (r"/api/v1/flicks/count\.json", handlers.api.FlickCountHandler),
       (r"/api/v1/flicks/create\.json", handlers.api.FlickCreateHandler),
+      (r"/api/v1/flicks/create-from-imgurl\.json", ImageSearchHandler),
 
       (r"/picture-search", PictureSearchHandler),
       (r"/picture-string-search", PictureSearchByStringHandler),
-      (r"/image-search/imgurl\.json", ImageSearchHandler)
 
 ]
 

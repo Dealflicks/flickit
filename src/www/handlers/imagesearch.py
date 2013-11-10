@@ -3,6 +3,9 @@ import handlers.base
 from cStringIO import StringIO
 import tornado.escape
 
+import models.flick
+import models.movie
+
 class PictureHandler(handlers.base.BaseHandler):
 
     def cycle_the_filter(self, img_url, key_name, edit_count):
@@ -73,5 +76,21 @@ class ImageSearchHandler(JSONPHandler):
 
     def get(self):
     	org_img_url = self.valid('imgurl', str, required=True)
-    	id, name, nltk = self.search_for_image(org_img_url)
-        self.write("stub", {'movie_id' : id}) 
+        callback = self.valid("callback", required=True)
+
+    	movie_id, name, nltk = self.search_for_image(org_img_url)
+
+        user = self.get_current_user()
+
+        movie = models.movie.MovieModel.get_from_mysql_with_id(self.application, movie_id)
+        flick = models.flick.FlickModel.get_or_create(self.application, movie.id, user.id)
+
+        has_flicked = False
+        if flick:
+            has_flicked = True
+
+       
+        stuff = { 'movie_id' : movie.id, 'count' : movie.count, 'has_flicked' : has_flicked}
+
+        self.write(callback, stuff)
+

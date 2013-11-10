@@ -210,9 +210,14 @@
             $.s.floatingButton.href = href;
             // pop new window and hide on click
             $.s.floatingButton.onclick = function () {
-              $.w.open(this.href, 'flick' + new Date().getTime(), $.a.pop);
-              $.f.hideFloatingButton();
-              $.v.hazFloatingButton = false;
+              // $.w.open(this.href, 'flick' + new Date().getTime(), $.a.pop);
+              // $.f.hideFloatingButton();
+              // $.v.hazFloatingButton = false;
+
+              $.f.debug(img.src);
+              $.f.createFlickFromImageUrl(img.src);
+
+
               // don't open href; we've successfully popped a window
               return false;
             };
@@ -286,8 +291,8 @@
         },
 
         behavior: function () {
-          // add a single event listener to the body for minimal impact
-          $.f.listen($.d.b, 'click', $.f.click);
+          // TODO: add a single event listener to the body for minimal impact
+          // $.f.listen($.d.b, 'click', $.f.click);
           if ($.v.config.hover) {
             $.f.listen($.d.b, 'mouseover', $.f.over);
           }
@@ -302,6 +307,14 @@
           $.f.debug("Create Flick for " + movie_id);
           var query = '?movie_id=' + movie_id + '&ref=' + encodeURIComponent($.v.here) + '&source=' + $.a.countSource;
           $.f.call($.a.endpoint.flick_create + query, $.f.ping.count, a_count);
+        },
+
+        createFlickFromImageUrl: function(img_src) {
+          $.f.debug("Create Flick for img.src: " + img_src);
+          var query = '?imgurl=' + encodeURIComponent(img_src) + '&ref=' + encodeURIComponent($.v.here) + '&source=' + $.a.countSource;
+          $.f.call($.a.endpoint.flick_create_image_url + query, $.f.ping.log, $.f.callback.length);
+
+
         },
 
         prettyFlickCount: function (n) {
@@ -678,7 +691,8 @@
               $.a.myDomain = /^https?:\/\/(www\.|)justflickit\.dev\//;
               $.a.endpoint = {
                 'flick_count': '//www.justflickit.dev/api/v1/flicks/count.json',
-                'flick_create': '//www.justflickit.dev/api/v1/flicks/create.json'
+                'flick_create': '//www.justflickit.dev/api/v1/flicks/create.json',
+                'flick_create_image_url': '//www.justflickit.dev/api/v1/flicks/create-from-imgurl.json'
               };
               $.a.cdn = {
                 'https:': 'https://www.justflickit.dev',
@@ -793,7 +807,7 @@
           $.f.build();
 
           $.f.presentation();
-          // $.f.behavior();
+          $.f.behavior();
 
 
 
