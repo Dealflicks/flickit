@@ -2,6 +2,30 @@
 
 {% block content %}
 
-<h1> Flickit </h1>
+
+<div class="home-poster">
+	<div class="poster-wrap">
+		<img src="../static/img/thor-poster-lg.png" />
+		<div class="poster-overlay">
+			<button class="flickit-btn flickit-btn-nope">NOPE</button>
+			<button class="flickit-btn flickit-btn-flick">FLICKIT</button>
+		</div>
+	</div>
+</div>
+
+<div class="movie-list">
+	{% for flick in flicks %}
+    {% set flick_movie = flick.movie %}
+	<div class="row movie-row">
+		<div class="col-md-2">
+			<div class="poster">
+				<img width="180" src="{{ flick_movie.poster }}"/>
+			</div>
+			<a class="flickit-btn flickit-btn-deals" href="{{flick_movie.dealflicks_url}}" target="_blank">View Deals</a>
+		</div>
+	</div>
+	{% end %}		
+</div>
+
 
 {% end %}

@@ -1,0 +1,38 @@
+{% extends base.html %}
+
+{% block content %}
+
+
+<div class="movie-list-flicks">
+
+	{% for flick in flicks %}
+
+		{# do this to prevent querying the db over and over for the movie #}
+		{% set flick_movie = flick.movie %}
+
+	
+	<div class="row movie-row">
+		<div class="col-md-2">
+			<div class="poster">
+				<img width="180" src="{{ flick_movie.poster }}"/>
+			</div>
+			<a href="{{flick_movie.dealflicks_url}}" class="flickit-btn flickit-btn-deals" target="_blank">View Deals</a>
+		</div>
+		<div class="col-md-9 content">
+			<div class="row">
+				<div class="embed"><a class="btn" href="/widget-builder?movie_id={{flick_movie.id}}">Embed</a></div>
+				<h2>{{ flick_movie.name }} <span class="released">({{ flick_movie.theater_release_date }})</span></h2>
+				<h4>{{ flick_movie.mpaa_rating }} | {{ flick_movie.duration }}min | {{ flick_movie.genre }}</h4>
+				<div class="ratings">
+	                <div class="rt-icon fresh"></div><h3>{{ flick_movie.critics_score }}%</h3>
+	                <div class="rt-icon upright"></div><h3>{{ flick_movie.audience_score }}%</h3>
+				</div>
+				<div class="cast"><strong>Cast:</strong> {{ flick_movie.abridged_cast }}</div>
+				<p class="description">{{ flick_movie.synopsis }}</p>
+			</div>
+		</div>	
+	</div>
+
+	{% end %}
+</div>
+{% end %}
