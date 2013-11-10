@@ -12,7 +12,6 @@ handlers = [
       (r"/login", handlers.auth.AuthLoginHandler),
       (r"/flicks", handlers.flicks.FlicksHandler),
       (r"/widget-builder", handlers.widget_builder.WidgetBuilderHandler),
-      (r"/flicks/create", handlers.flicks.FlicksCreateHandler),
       (r"/api/v1/flicks/count\.json", handlers.api.FlickCountHandler),
       (r"/api/v1/flicks/create\.json", handlers.api.FlickCreateHandler),
       (r"/api/v1/flicks/create-from-imgurl\.json", ImageSearchHandler),

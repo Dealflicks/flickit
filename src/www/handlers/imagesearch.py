@@ -61,6 +61,7 @@ class PictureSearchByStringHandler(PictureHandler):
     	img_string = self.valid('imgstr', str, required=True)
     	if (self.errors):
             return self.send_error(400, chunk={'Status' : 'Error', 'Errors' : self.errors })
+
     	imgbuf = StringIO()
     	imgbuf.write(img_string)
     	org_img_url, key_name = utils.utils.upload_image(imgbuf)
