@@ -4,7 +4,7 @@
 
 <div class="navbar navbar-fixed-top">
 	<a href="/" ><img src="../static/img/flickit-logo.png"/></a>
-	<div class="username"><a class="btn" href="/flicks">My Flicks</a></div>
+	<div class="username"><a class="btn" href="#">{{ user.first_name }}'s' Flicks</a></div>
 </div>
 <div class="home-poster">
 	<div class="poster-wrap">
@@ -15,15 +15,18 @@
 		</div>
 	</div>
 </div>
+
 <div class="movie-list">
+	{% for flick in flicks %}
 	<div class="row movie-row">
 		<div class="col-md-2">
 			<div class="poster">
-				<img src="../static/img/enders.png"/>
+				<img width="180" src="{{ flick.movie.poster }}"/>
 			</div>
 			<button class="flickit-btn flickit-btn-deals">View Deals</button>
 		</div>
-	</div>	
+	</div>
+	{% end %}		
 </div>
 
 

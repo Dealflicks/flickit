@@ -13,20 +13,20 @@
 	<div class="row movie-row">
 		<div class="col-md-2">
 			<div class="poster">
-				<img src="../static/img/poster.jpg"/>
+				<img width="180" src="{{ flick.movie.poster }}"/>
 			</div>
-			<button class="flickit-btn flickit-btn-deals">View Deals</button>
+			<button href="http://www.dealflicks.com/movies/{{ flick.movie.name }}" class="flickit-btn flickit-btn-deals">View Deals</button>
 		</div>
 		<div class="col-md-9 content">
 			<div class="row">
-				<h2>{{ flick.movie.name }} <span class="released">{{ flick.movie.theater_release_date }}</span></h2>
-				<h4>PG-13 | 123min | Action</h4>
+				<h2>{{ flick.movie.name }} <span class="released">({{ flick.movie.theater_release_date }})</span></h2>
+				<h4>{{ flick.movie.mpaa_rating }} | {{ flick.movie.duration }}min | {{ flick.movie.genre }}</h4>
 				<div class="ratings">
-	                <div class="rt-icon fresh"></div><h3>90%</h3>
-	                <div class="rt-icon upright"></div><h3>90%</h3>
+	                <div class="rt-icon fresh"></div><h3>{{ flick.movie.critics_score }}%</h3>
+	                <div class="rt-icon upright"></div><h3>{{ flick.movie.audience_score }}%</h3>
 				</div>
-				<div class="cast"><strong>Cast:</strong> Chris Hemsworth, Natalie Portman, Tom Hiddleston</div>
-				<p class="description">Marvel's "Thor: The Dark World" continues the big-screen adventures of Thor, the Mighty Avenger, as he battles to save Earth and all the Nine Realms from a shadowy enemy that predates the universe itself. In the aftermath of Marvel's "Thor" and "Marvel's The Avengers," Thor fights to restore order across the cosmos...but an ancient race led by the vengeful Malekith returns to plunge the universe back into darkness. Faced with an enemy that even Odin and Asgard cannot withstand, Thor must embark on his most perilous and personal journey yet, one that will reunite him with Jane Foster and force him to sacrifice everything to save us all. (c) Disney</p>
+				<div class="cast"><strong>Cast:</strong> {{ flick.movie.abridged_cast }}</div>
+				<p class="description">{{ flick.movie.synopsis }}</p>
 			</div>
 		</div>
 		<div class="embed"><a class="btn" href="/widget-builder">Embed</a></div>	
