@@ -2,7 +2,13 @@ import tornado.web
 
 import handlers.base
 
+import models.movie
+import models.flick
+
 class FlicksHandler(handlers.base.BaseHandler):
+
+    def check_xsrf_token(self):
+        pass
 
     @tornado.web.authenticated
     def get(self):
@@ -12,7 +18,7 @@ class FlicksHandler(handlers.base.BaseHandler):
 
     @tornado.web.authenticated
     def post(self):
-        movie_id = self.valid("movie_id", required=False)
+        movie_id = self.valid("movie_id")
 
         # need to get user from cookie.
         user = self.get_current_user()
@@ -27,8 +33,10 @@ class FlicksHandler(handlers.base.BaseHandler):
         if flick:
             has_flicked = True
 
-        stuff = { 'movie_id' : movie.id, 'count' : movie.count, 'has_flicked' : has_flicked}
+        movie_dict = { 'poster' : movie.poster, 'dealflicks_url' : movie.dealflicks_url };
+
+        stuff = { 'movie' : movie_dict, 'count' : movie.count, 'has_flicked' : has_flicked}
         
-        self.write("movie_id: %s" % movie_id)
+        self.write(stuff)
 
     

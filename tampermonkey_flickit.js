@@ -2,7 +2,7 @@
 // @name       Flickit
 // @namespace  http://justflickit.com/
 // @version    0.1
-// @description  enter something useful
+// @description  Flick anywhere
 // @match      http://*/*
 // @copyright  2013+, Flickit
 // ==/UserScript==
