@@ -6,3 +6,8 @@ requests==2.0.0
 tornado==3.1.1
 torndb==0.1
 wsgiref==0.1.2
+pycurl==7.19.0.2
+nltk==2.0.4
+boto==2.16.0
+lxml==3.2.4
+PIL==1.1.7
