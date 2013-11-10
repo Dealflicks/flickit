@@ -4,9 +4,12 @@
 
 <div class="navbar navbar-fixed-top">
 	<a href="/" ><img src="../static/img/flickit-logo.png"/></a>
-	<div class="username"><a class="btn" href="/flicks">Zachary's Flicks</a></div>
+	<div class="username"><a class="btn" href="/flicks">{{ user.first_name }}'s Flicks</a></div>
 </div>
 <div class="movie-list-flicks">
+
+	{% for flick in flicks %}
+	
 	<div class="row movie-row">
 		<div class="col-md-2">
 			<div class="poster">
@@ -16,7 +19,7 @@
 		</div>
 		<div class="col-md-9 content">
 			<div class="row">
-				<h2>Thor: The Dark World <span class="released">(Nov 8, 2013)</span></h2>
+				<h2>{{ flick.movie.name }} <span class="released">{{ flick.movie.release_date }}</span></h2>
 				<h4>PG-13 | 123min | Action</h4>
 				<div class="ratings">
 	                <div class="rt-icon fresh"></div><h3>90%</h3>
@@ -28,5 +31,7 @@
 		</div>
 		<div class="embed"><a class="btn" href="/widget-builder">Embed</a></div>	
 	</div>
+
+	{% end %}
 </div>
 {% end %}

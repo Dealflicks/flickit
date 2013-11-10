@@ -26,6 +26,10 @@ class UserModel(models.base.BaseModel):
         return self._email
 
     @property
+    def first_name(self):
+        return self._first_name   
+
+    @property
     def flicks(self):
         flick_rows = self._app.mysqldb.query("SELECT * FROM flick WHERE user_id = %s ORDER BY flicked_at DESC", self._id)
 
