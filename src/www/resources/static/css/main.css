@@ -7,7 +7,7 @@ label{width:120px;margin-bottom:10px}
 .btn{border:1px #ddd solid}
 .row{margin-left:0;margin-right:0}
 .col-md-2{min-width:200px}
-.flickit-btn{margin-top:10px;display:inline-block;border-radius:3px;border:none;color:#fff;font-size:16px;font-weight:bold;padding:8px 16px;cursor:pointer;font-weight:500;text-decoration:none;outline:none;width:180px}
+.flickit-btn{margin-top:10px;display:inline-block;border-radius:3px;border:none;color:#fff;font-size:16px;font-weight:bold;padding:8px 16px;cursor:pointer;font-weight:500;text-decoration:none;outline:none;width:180px;text-align:center}
 .flickit-btn:hover{text-decoration:none;color:#fff}
 .flickit-btn.disabled,.flickit-btn[disabled],.flickit-btn:hover.disabled,.flickit-btn:hover[disabled]{background-color:#dfdfdf;text-shadow:0 1px 0 #4a4949;box-shadow:0 3px 3px rgba(0,0,0,0.42),inset 0 2px 0 rgba(255,254,253,0.41);background-image:linear-gradient(bottom, rgba(70,70,70,0.57) -4.5%, rgba(70,70,70,0.57) -3.97%, rgba(146,146,146,0.57) 104.5%);cursor:default}
 .flickit-btn-deals{text-shadow:0 1px 0 #083357;border:none;background-color:#4594c5;box-shadow:0 1px 3px rgba(0,0,0,0.53),inset 0 2px 0 rgba(255,254,253,0.41);background-image:linear-gradient(bottom, #55a0d7 -4.5%, #4594c5 104.5%);outline-color:rgba(0,0,0,0)}
