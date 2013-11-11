@@ -823,7 +823,8 @@
   'floatingButtonOffsetLeft': 10,
   'endpoint': {
     'flick_count': '//www.justflickit.com/api/v1/flicks/count.json',
-    'flick_create': '//www.justflickit.com/api/v1/flicks/create.json'
+    'flick_create': '//www.justflickit.com/api/v1/flicks/create.json',
+    'flick_create_image_url': '//www.justflickit.com/api/v1/flicks/create-from-imgurl.json'
   },
   'config': {
     'flickitCountPosition': {
