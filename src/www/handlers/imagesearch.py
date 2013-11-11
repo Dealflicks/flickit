@@ -110,6 +110,9 @@ class ImageSearchHandler(JSONPHandler):
     	org_img_url = self.valid('imgurl', str, required=True)
         callback = self.valid("callback", required=True)
 
+        print org_img_url
+        print callback
+        
     	movie_id, name, nltk = self.search_for_image(org_img_url)
 
         user = self.get_current_user()

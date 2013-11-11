@@ -13,13 +13,14 @@ from PIL import Image
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
+import tornado.escape
 
 def id_generator(size=8, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for x in range(size))
 
 
 def get_best_for_image(img_url):
-	url = "https://www.google.com/searchbyimage?&image_url=%s" % img_url
+	url = "https://www.google.com/searchbyimage?&image_url=%s" % tornado.escape.url_escape(img_url)
 
 	b = StringIO()
 	c = pycurl.Curl()
