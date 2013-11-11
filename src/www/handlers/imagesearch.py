@@ -112,13 +112,20 @@ class ImageSearchHandler(JSONPHandler):
 
         print org_img_url
         print callback
-        
+
     	movie_id, name, nltk = self.search_for_image(org_img_url)
+
+        print movie_id
+        print name
 
         user = self.get_current_user()
 
+        print user.first_name
+
         movie = models.movie.MovieModel.get_from_mysql_with_id(self.application, movie_id)
         flick = models.flick.FlickModel.get_or_create(self.application, movie.id, user.id)
+
+        print flick
 
         has_flicked = False
         if flick:
