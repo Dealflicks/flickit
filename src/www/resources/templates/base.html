@@ -21,7 +21,7 @@
 		<div class="navbar navbar-fixed-top">
 			<a href="/" ><div class="logo"></div></a>
 		    {% if current_user %}
-			<div class="username"><a class="btn" href="/flicks">{{ escape(current_user.first_name) }}'s' Flicks</a></div>
+			<div class="username"><a class="btn" href="/flicks">{{ escape(current_user.first_name) }}'s Flicks</a></div>
 		    {% end %}
 		</div>
 		{% block content %}
